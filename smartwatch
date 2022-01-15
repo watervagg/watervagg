@@ -1,0 +1,79 @@
+import time
+import random
+import images
+import datetime
+from datetime import date
+
+# ! This is an operating system for smartwatches
+# TODO make watch faces
+# TODO show time
+# TODO make sports
+# TODO make heart rate
+
+
+today = date.today()
+
+i = 1
+
+time.sleep(1)
+day = today.strftime("%B %d, %Y")
+while i <= 5: 
+    currentDT = datetime.datetime.now()
+    time.sleep(1)
+    print("%d" % currentDT.hour,":%d" % currentDT.minute,":%d" % currentDT.second)
+    i = i + 1
+print(day)
+print("if you want the time to show up more time go to line 20 in module 12 change the number")
+
+print(images.smartwatch)
+time.sleep(1)
+smartwatch = input()
+
+if smartwatch == 'BPM':
+    BPM = range(list(55, 155))
+    bpm = random.shuffle(BPM)
+    print(images.BPM)
+    print(bpm)
+if smartwatch == 'sports':
+    print(images.sports_mode)
+    sports = input()
+    if sports == 'walking' or sports == 'climbing' or sports == 'Yoga':
+        print("%d" % currentDT.hour,":%d" % currentDT.minute,":%d" % currentDT.second)
+        SPORT_BPM = range(list(45, 145))
+        sport_bpm = random.shuffle(SPORT_BPM)
+        print(sport_bpm)
+    if sports == 'cycling' or sports == 'spinning' or sports == 'indoor running' or sports == 'integrated training' or sports == 'basketball' or sports == 'football' or sports == 'gymnastics' or sports == 'rowing' or sports == 'tredmill':
+        print("%d" % currentDT.hour,":%d" % currentDT.minute,":%d" % currentDT.second)
+        Heavy = range(list(60, 170))
+        KCAL = range(list(00, 100))
+        heavy = random.shuffle(Heavy)
+        Kcal = random.shuffle(KCAL)
+        start_time = time.time()
+        print(heavy, "BPM  |  ", Kcal, 'Kcal')
+        heavy = input("Leave? (yes)")
+        if heavy == 'yes' and sports != 'integrated training':
+            fin_time = time.time() - start_time
+            print("Kcal is", Kcal, 'BPM', heavy, "and the speed is 25 mph")
+        else:
+            fin_time = time.time() - start_time
+            print("Invalaid input your time was", fin_time)
+if smartwatch == 'sleeping':
+    Sleeping = range(15, 11)
+    sleeping = random.choice(Sleeping)
+    print("| = light sleep\n|| = deep sleep\n||| = R.E.M")
+    time.sleep(1)
+    print("\n", images.sleeping)
+    time.sleep(1)
+    print("The time you slept last night is", sleeping)
+if smartwatch == 'breathing':
+    print("%d" % currentDT.hour,":%d" % currentDT.minute,":%d" % currentDT.second)
+    Breathing = range(list(5, 9))
+    breathing = random.shuffle(Breathing)
+    breathing2 = random.shuffle(Breathing)
+    breathing3 = random.shuffle(Breathing)
+    while i <= 30:
+        time.sleep(1)
+        print(i)
+        i = i + 1
+    print("     ",       breathing3)
+    print("      V", breathing, ' ^', breathing2)
