@@ -1,0 +1,80 @@
+Accounts = ['sweet_kristy',
+"kristy_honey", 
+"bubbly_snowflake", 
+"angelic.princess.kristy", 
+"fairy.princess.kristy",
+'baby_kristy_butterfly',"Facebookaphobia",
+"Cheesecakeophobia",
+"DMVphobia", "bandalls",
+
+"wattlexp",
+
+'sweetiele',
+
+'hyperyaufarer', 
+
+'editussion',
+
+'experthead',
+
+'flamesbria',
+
+'heroanhart',
+
+'liveltekah', 
+
+'linguss', 
+
+'interestec', 
+
+"fuzzyspuffy",
+
+"monsterup",
+
+'milka1baby',
+
+'lovesboost',
+
+'edgymnerch',
+
+"ortspoon",
+
+"oranolio",
+
+"onemama",
+
+"dravenfact",
+
+"reallychel",
+
+"reakefit",
+
+"popularkiya",
+
+"breacche",
+
+"blikimore",
+
+"stonewellforever",
+
+"simmson",
+
+"brighthulk",
+
+'bootecia',
+
+'spuffyffet',
+
+'rozalthiric',
+
+"bookman", 'VGA!']
+
+Posts = ["Did you know that you can make a spoon float with tape. but without you cann't?", 'Muck', 'Please send me ideas for a python project!', 'Hello this is my first tweet!',
+"Bro I love canada!", 'My new apps! in pymini', 'Hi']
+years = range(2010, 2022)
+
+Followers = range(1_000)
+
+Veiws = range(1_000)
+
+Likes = range(1_000)
