@@ -1,0 +1,26 @@
+import random
+import time
+import images
+import vgmedia_librares as librares
+
+try:
+    print("Welcome to vgmedia")
+    import connection as c
+    if c.rl.lower() == 'leave':     
+        print("You left but to like, follow and comment you need to connect!")
+    time.sleep(1)
+    scroll = input("<Enter (Down)>$ ")
+    if scroll == 'down':
+        while True:
+            account = random.choices(librares.Accounts)
+            posts = random.choices(librares.Posts)
+            year = random.choices(librares.years)
+            follow = random.choices(librares.Followers)
+            veiws = random.choices(librares.Veiws)
+            likes = random.choices(librares.Likes)
+            print(f"{year} created by {account} {follow}\n\n\n{posts}\nlikes {likes}")
+            scroll = input("$ ")
+            if scroll == 'leave':
+                break
+except Exception:
+    print(images.Error)    
