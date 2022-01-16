@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @watervagg
-- 👀 I’m interested in python
+- 👀 I’m interested in python and html
 - 🌱 I’m currently learning html
 - 💞️ I’m looking to collaborate on ...
 - 📫 How to reach me ...
