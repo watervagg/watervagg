@@ -1,5 +1,4 @@
 import time
-import os
 import images
 import random
 import datetime
@@ -54,8 +53,7 @@ try:
     if password == password or second == password or trird == password:
         while True:
             print(Fore.MAGENTA)
-            print(images.home)
-            print("+ IDE(IDE) + Command Prompt python ready(CPP)")
+            print(images.background)
             print("%d" % currentDT.hour,":%d" % currentDT.minute,":%d" % currentDT.second)
             main = input()
 
@@ -243,25 +241,10 @@ try:
                     break
             if main.lower() == 'leave':
                 break
-            if main.lower() == "ide":
-                import pyminiIDE
-            if main.lower() == "cpp":
-                def pycmd():
-                    os.system('cmd /c "python"')
-                pycmd()
-            if main.lower() == "setting":
-                import pysettings as pys    
-                if pys.user.lower() == "proggraming":
-                    print("Ok turning on proggraming mode!")
-                if pys.user.lower() == "kids mode":
-                    print("Ok its your time to user pymini kids :)")
-                if pys.user.lower() == "content creator":
-                    print("So you are a content creator your expirience will be better")
-                
             else:
                 print("Im really sorry but I can't understand")
                 
 except Exception:
     print(Fore.BLUE+images.Error+Fore.RESET)
     import load_bar
-    import pymini 
+    import pymini

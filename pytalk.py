@@ -1,5 +1,5 @@
+from msilib.schema import tables
 import time
-import os
 import images
 import random
 import datetime
@@ -13,6 +13,7 @@ i = 1
 today = date.today()
 currentDT = datetime.datetime.now()
 password = "3219"
+pytalk = pyttsx3.init()
 
 try:
     print(Fore.MAGENTA + "\n")
@@ -20,12 +21,19 @@ try:
     day = today.strftime("%B %d, %Y")
     print("d2 =", day)
     print(images.password)
-    password = input()
+    password = input("Enter your password : ")
+    pytalk.say("Enter your password : ")
+    pytalk.runAndWait()
     print(Fore.RESET)
 
     # ! Wrong password
     if password != "3219":
+        
         print(Fore.RED+images.wrongpassword)
+        pytalk.say("wrong password")
+        pytalk.runAndWait()
+        pytalk.say("Do you want to try again?")
+        pytalk.runAndWait()
         ta = input()
 
 
@@ -53,14 +61,25 @@ try:
         #?Password right
     if password == password or second == password or trird == password:
         while True:
+            pytalk.say("""The apps are
+            games 
+            notes 
+            camera
+            clock 
+            google
+            calculator
+            & settings
+            """)
+            pytalk.runAndWait()
             print(Fore.MAGENTA)
             print(images.home)
-            print("+ IDE(IDE) + Command Prompt python ready(CPP)")
             print("%d" % currentDT.hour,":%d" % currentDT.minute,":%d" % currentDT.second)
             main = input()
 
             # * The notes app!
             if main.lower() == 'notes':
+                pytalk.say("Type some notes!")
+                pytalk
                 while True:
                     notes = []
                     print("Press leave to leave notes")
@@ -76,6 +95,7 @@ try:
             
             # * The proggram app
             if main == 'program':
+                pytalk.say("Please enter your proggram")
                 print(images.proggram)
                 print('type here')
                 print('type here')
@@ -84,26 +104,58 @@ try:
             
             # * The calculator app
             if main == 'calculator':
+                pytalk.say("You entered calculator so please enter your numbers")
+                pytalk.runAndWait()
                 while True:
                     time.sleep(1)
                     print(Fore.GREEN+images.calculator)
                     print('type leave if you want to leave the calculator (you have to pass every number thought!)')
+                    pytalk.say("Enter your first number!")
+                    pytalk.runAndWait()
                     num = float(input("Your number "))
+                    pytalk.say("Enter your second number")
+                    pytalk.runAndWait()
                     num2 = float(input("Your second number "))
+                    pytalk.say("Do you want add minus multiply or devide? (+, -, *, /)")
+                    pytalk.runAndWait()
                     # num3 = input("Your third number ")
                     num4 = input('do you want "+ - * multiply or / for devide" ')
                     if num4 == '+':
-                        print('the result of', num, '+', num2, 'is', (num) + (num2))
+                        pytalk.say("The result is")
+                        pytalk.runAndWait()
+                        result = num + num2
+                        pytalk.say(num + num2)
+                        pytalk.runAndWait()
+                        print('the result of', num, '+', num2, 'is', result)
                     if num4 == '-':
+                        resultm = num - num2
+                        pytalk.say("The result is")
+                        pytalk.runAndWait()
+                        pytalk.say(resultm)
+                        pytalk.runAndWait()
                         print('The result is', (num) - (num2))
                     if num4 == '*':
+                        resultmu = num * num2
+                        pytalk.say("the reuslt is")
+                        pytalk.runAndWait()
+                        pytalk.say(resultmu)
+                        pytalk.runAndWait()
                         print("the result is", (num) * (num2))
                     if num4 == '/':
+                        resultl = num / num2
+                        pytalk.say("The result is")
+                        pytalk.runAndWait()
+                        pytalk.say(resultl)
+                        pytalk.runAndWait()
                         print('the result is', (num) / (num2))
                     if num.lower() == 'leave' or num2.lower() == 'leave' or num4.lower() == 'leave':
+                        pytalk.say("you have seccesfully left")
+                        pytalk.runAndWait()
                         print('You have seccesfully left '+Fore.RESET)
                         break
                     else:
+                        pytalk.say("invalaid input")
+                        pytalk.runAndWait()
                         print('Invalaid input')
                     
             if main == 'games':
@@ -243,25 +295,10 @@ try:
                     break
             if main.lower() == 'leave':
                 break
-            if main.lower() == "ide":
-                import pyminiIDE
-            if main.lower() == "cpp":
-                def pycmd():
-                    os.system('cmd /c "python"')
-                pycmd()
-            if main.lower() == "setting":
-                import pysettings as pys    
-                if pys.user.lower() == "proggraming":
-                    print("Ok turning on proggraming mode!")
-                if pys.user.lower() == "kids mode":
-                    print("Ok its your time to user pymini kids :)")
-                if pys.user.lower() == "content creator":
-                    print("So you are a content creator your expirience will be better")
-                
             else:
                 print("Im really sorry but I can't understand")
                 
 except Exception:
     print(Fore.BLUE+images.Error+Fore.RESET)
     import load_bar
-    import pymini 
+    import pymini

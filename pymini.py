@@ -1,5 +1,4 @@
 import time
-import os
 import images
 import random
 import datetime
@@ -55,7 +54,6 @@ try:
         while True:
             print(Fore.MAGENTA)
             print(images.home)
-            print("+ IDE(IDE) + Command Prompt python ready(CPP)")
             print("%d" % currentDT.hour,":%d" % currentDT.minute,":%d" % currentDT.second)
             main = input()
 
@@ -210,6 +208,8 @@ try:
             if main.lower() == 'google':
                 print(Fore.RED)
                 import google_assistant
+                if google_assistant.ask.lower() == "leave":
+                    break
                 print(Fore.RESET)
             if main.lower() == 'repeat':    
                 while True:
@@ -243,14 +243,8 @@ try:
                     break
             if main.lower() == 'leave':
                 break
-            if main.lower() == "ide":
-                import pyminiIDE
-            if main.lower() == "cpp":
-                def pycmd():
-                    os.system('cmd /c "python"')
-                pycmd()
             if main.lower() == "setting":
-                import pysettings as pys    
+                import pysettings as pys
                 if pys.user.lower() == "proggraming":
                     print("Ok turning on proggraming mode!")
                 if pys.user.lower() == "kids mode":
@@ -264,4 +258,4 @@ try:
 except Exception:
     print(Fore.BLUE+images.Error+Fore.RESET)
     import load_bar
-    import pymini 
+    import pymini

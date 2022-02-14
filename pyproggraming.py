@@ -1,3 +1,6 @@
+# import time
+# import os
+# os.system('cmd /k "python"')
 import time
 import os
 import images
@@ -246,17 +249,15 @@ try:
             if main.lower() == "ide":
                 import pyminiIDE
             if main.lower() == "cpp":
-                def pycmd():
+                def cpp():
                     os.system('cmd /c "python"')
-                pycmd()
+                cpp()
             if main.lower() == "setting":
-                import pysettings as pys    
+                import pysettings as pys
                 if pys.user.lower() == "proggraming":
                     print("Ok turning on proggraming mode!")
                 if pys.user.lower() == "kids mode":
                     print("Ok its your time to user pymini kids :)")
-                if pys.user.lower() == "content creator":
-                    print("So you are a content creator your expirience will be better")
                 
             else:
                 print("Im really sorry but I can't understand")
