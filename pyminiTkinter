@@ -1,0 +1,9 @@
+from tkinter import *
+
+def starting() :
+    root.destroy()
+    import passwordSystem
+root = Tk()
+root.title('starting')
+button = Button(root, text="CLick Me", command=starting).pack(side=TOP)
+root.mainloop()
