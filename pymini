@@ -1,4 +1,7 @@
 import time
+import os
+import winsound
+import click
 import images
 import random
 import datetime
@@ -7,11 +10,13 @@ from datetime import date
 from colorama import init, Fore, Back, Style
 i = 1
 # * This is an operating system with a few apps!
-# TODO Make more apps
+# TODO make the autoclicker!
 # ! made 1
 today = date.today()
 currentDT = datetime.datetime.now()
 password = "3219"
+points = -1000
+
 
 try:
     print(Fore.MAGENTA + "\n")
@@ -47,10 +52,16 @@ try:
                     print("Right password plese enter it at the start" + Fore.RESET)
         else:
             print("Can't understand")
+            from bug1 import PasswordGlitch
+            print('good luck getting out of here!')
+            
+
 
 
         #?Password right
-    if password == password or second == password or trird == password:
+    if (password == password or 
+    second == password or 
+    trird == password):
         while True:
             print(Fore.MAGENTA)
             print(images.home)
@@ -70,6 +81,15 @@ try:
                     if note_w.lower() == 'leave':
                         print("You left!"+Fore.RESET)
                         break
+                    if note_w.lower() == "i love pymini":
+                        sum_of_digits = 500
+                        print(sum_of_digits)
+                        for digit in str(points):
+                        # turn to string to iterate through
+                            sum_of_digits += int(points)
+                        # OUTPUT
+                        print("500- points for you my best friend you are at", points)
+                    
 
             
             # * The proggram app
@@ -82,10 +102,10 @@ try:
             
             # * The calculator app
             if main == 'calculator':
-                while True:
+                for i in range(5):
                     time.sleep(1)
                     print(Fore.GREEN+images.calculator)
-                    print('type leave if you want to leave the calculator (you have to pass every number thought!)')
+                    print('type 12345678910 or 1234.003 if you want to leave the calculator please enter it on the first number (you have to pass every number thought!)')
                     num = float(input("Your number "))
                     num2 = float(input("Your second number "))
                     # num3 = input("Your third number ")
@@ -98,12 +118,34 @@ try:
                         print("the result is", (num) * (num2))
                     if num4 == '/':
                         print('the result is', (num) / (num2))
-                    if num.lower() == 'leave' or num2.lower() == 'leave' or num4.lower() == 'leave':
+                    if num == '12345678910' or num == "1234":
                         print('You have seccesfully left '+Fore.RESET)
+                        import pymini
                         break
                     else:
                         print('Invalaid input')
                     
+            if main.lower() == 'image':
+                from PIL import Image
+                folder = input("what folder (if none type none), (if a folder is on a folder type folder\\\\folder2) : ")
+                
+                if folder == "none":
+                    img = input("Ok what image do you want (the name with the .png) : ")
+                
+                    print("Here's what I found!")
+                    #read the image
+                    im = Image.open(f"C:\\Users\\water\\Desktop\\coding py\\pymini\\{img}")
+                    #show image
+                    im.show()
+                
+                img = input("Ok what image do you want (the name with the .png) : ")
+            
+                print("Here's what I found!")
+                #read the image
+                im = Image.open(f"C:\\Users\\water\\{folder}\\{img}")
+                #show image
+                im.show()
+
             if main == 'games':
             #*The games folder!
                 time.sleep(1)
@@ -159,7 +201,8 @@ try:
                     print('Your porblem is', maths, symbols, maths2, '=')
                     maths = input()
                     fin_time = time.time() - start_time
-                    print('It took you', fin_time, 'to figure it out')
+                    m10 = points - 10
+                    print('It took you', fin_time, 'to figure it out + 10 points')
                 if game == 'fast typing' or game == '3':
                     fastyping = ['cat', 'man', 'woman', 'python', 'VScode', 'easy', 'last']
                     time.sleep(1)
@@ -184,7 +227,8 @@ try:
                         print("You're wrong!")
                     else:
                         fin_time = time.time() - start_time
-                        print("You're right! It took you", fin_time, "to reach"+Fore.RESET)
+                        m5 = points - 5
+                        print("+5 points You're right! It took you", fin_time, "to reach"+Fore.RESET)
             if main == 'camera':
                 import cv2
 
@@ -219,13 +263,34 @@ try:
                     Repeat.runAndWait()
                     print(Fore.RESET)
             if main.lower() == 'motivation':
-                while True:
-                    MMotivation = pyttsx3.init()
+                                
+                talk = pyttsx3.init()
+                for i in range(10):
                     Motivation = ["You are the best proggramer ever", 'everyone loves you', "You're pretty"]
-                    motivation = random.choices(Motivation)
+                    motivation = random.choice(Motivation)
+                    talk.say(motivation)
+                    talk.runAndWait()
                     print(motivation)
-                    MMotivation.say(motivation)
-                    MMotivation.RunAndWait()
+            if main.lower() == "demotivation":
+                talk = pyttsx3.init()
+                name = input("tell me your name : ")
+                for i in range(10):
+                    Demotivation = [
+f"{name}, you look like a professional blind date.",
+f"{name}, you're not the sharpest knife in the drawer.",
+f"{name}, I could agree with you, but then we'd both be wrong.",
+f"{name}, let me guess",
+f"{name}, You really are an idiot", 
+f"{name}, Why do you exist?",
+f'{name}, I would insult you but you are just waste of breath',
+f"{name}, Your mom was 9 months in pain so you exist"]
+                    demotivation = random.choice(Demotivation)
+                    talk.say(demotivation)
+                    talk.runAndWait()
+                    print(demotivation)
+            if main.lower() == "vgmedia":
+                import vgmedia
+
             if main.lower() == 'clock':
                 while True:
                     time.sleep(1)
@@ -241,21 +306,94 @@ try:
                         import pymini
                         break
                     break
-            if main.lower() == 'leave':
-                break
             if main.lower() == "setting":
                 import pysettings as pys
-                if pys.user.lower() == "proggraming":
-                    print("Ok turning on proggraming mode!")
-                if pys.user.lower() == "kids mode":
-                    print("Ok its your time to user pymini kids :)")
-                if pys.user.lower() == "content creator":
-                    print("So you are a content creator your expirience will be better")
-                
+            if main.lower() == "pymini":
+                m300 = points - 500
+                print("-500 points :) you are at", m300)
+            if main.lower() == "alarm" and points < -500:
+                import alarm
+            if main.lower() == "alarm" and points > -500:
+                print("You dont have the points for premium pymini")
+            if main.lower() == "spam bot":
+                import pyautogui
+                Type = input("What type of spambot do you want? (SpamBot) (TyperBot) (Autoclicker) (countdown) (screenshot) (natural TypingBot) (KeyBot) : ")
+                if Type == "SpamBot":
+                    text = input(f"What text do you want : ")
+                    Times = int(input("How many times do you wish to type it : "))
+                    delayTime = int(input("How much time do you want to wait until it spams? (more than 1) :"))
+                    if delayTime > "0":
+                        print("Im really sorry but you can't do that its really dangerous for you computer")
+                    else:
+                        time.sleep(delayTime)
+                        #Warning Do Not Use this with out a time.sleep()
+                        for i in range(Times):
+                            pyautogui.typewrite(text)
+                if Type == "TyperBot":
+                    text = input(f"What text do you want : ")
+                    delayTime = int(input("How much time do you want to wait until it spams? (more than 1) :"))
+                    if delayTime > "0":
+                        print("Im really sorry but you can't do that its really dangerous for you computer")
+                    else:
+                        time.sleep(delayTime)
+                        #Warning Do Not Use this with out a time.sleep()
+                        pyautogui.typewrite(text)
+
+                if Type == "Autoclicker":
+                    print("You will have 50 seconds of an autoclicker!")
+                    ac = input("(v) : ")
+                    if ac == "v":
+                        time.sleep(5)
+                        for i in range(10):
+                            pyautogui.click()
+                            pyautogui.click()
+                            pyautogui.click()
+                            pyautogui.click()
+                            pyautogui.click()
+                            pyautogui.click()
+
+                    
+            if main.lower() == "spambot" and points > -500:
+                print("You dont have the points for premium pymini")
+            if main.lower() == "stats":
+                if points > 500:
+                    print("points are" + points + "you are a normal guy")
+                if points > 0:
+                    print("points are" + points + "you are a good guy")
+                if points > -500:
+                    print("points are" + points + "You are the a REALLY GOOD GUY (you can get premium)")
+                if points < 500:
+                    print("points are" + points + "You are questionable?")                    
+                if points < 1000:
+                    print("points are" + points + "You are or a normal guy or a bad guy")                    
+                    
+            if main.lower() == "register":
+                registarity == True
+                def registarity() :
+                    name = input("Your name : ")
+                    password = input(f"Please enter your password {name} : ")
+                    password = input(f"Enter you password again {name} : ")
+                    confirm = input("do you confirm (y) ")
+
+
+
+            if main.lower() == 'leave':
+                break             
             else:
                 print("Im really sorry but I can't understand")
-                
+            
 except Exception:
+    for i in range(0,2):
+        # winsound.PlaySound(sound,flags)
+        duration = 1000  # milliseconds
+        freq = 440  # Hz
+        winsound.Beep(freq, duration)
+    talk = pyttsx3.init() 
+    talk.say("Something went wrong")
+    talk.runAndWait()
+    import Error
     print(Fore.BLUE+images.Error+Fore.RESET)
     import load_bar
     import pymini
+
+__version__ = "1.0.3"
